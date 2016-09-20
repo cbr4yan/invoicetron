@@ -152,10 +152,10 @@ function calculateAll() {
     var $row = $(this).closest('tr');
     var quantity = $row.find('.quantity').val() ? $row.find('.quantity').val() : 1;
     var price = $row.find(".price").val() ? $row.find(".price").val() : '';
-    var discount = $row.find(".discount").val();
+    var discount = $row.find(".discount").val() ? $row.find(".discount").val() : '';
     var importe = $row.find(".amount").val() ? $row.find(".amount").val() : '';
-    var subtotal = $('.subtotal').val();
     var iva_amount = $('.iva_amount').val();
+    var subtotal = $('.subtotal').val();
     if (discount.length > 0) {
       operationDiscount = discount/100;
     }

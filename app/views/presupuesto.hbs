@@ -240,7 +240,6 @@ font-size: 13px;
           <td class="importe">{{this.amount}}{{#if this.amount}}€{{/if}}</td>
         </tr>
       {{/each}}
-      {{{eachRowPrint rows_num}}}
       </tbody>
         <tfoot>
     <tr>
@@ -262,7 +261,7 @@ font-size: 13px;
         <tr>
           <td>{{budget.subtotal}}{{#if budget.subtotal}}€{{/if}}</td>
           <td></td>
-          <td class="iva">{{budget.iva_perc}}</td>
+          <td class="iva">21</td>
           <td>{{budget.iva_amount}}{{#if budget.iva_amount}}€{{/if}}</td>
           <td>{{budget.total}}{{#if budget.total}}€{{/if}}</td>
         </tr>
