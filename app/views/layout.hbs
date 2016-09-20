@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/vendor/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css">
+  <link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="/vendor/jquery-ui/themes/base/jquery-ui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="/vendor/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+  {{#if isAdmin}}
+  <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">InvoiceTron</a>
+      </div>
+      <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+        <div class="navbar-form navbar-right"><a href="/logout" id="btn-logout" class="btn btn-primary"><i class="glyphicon glyphicon-lock icon-white"></i> Salir</a></div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  <div class="container-fluid cnt">
+    {{#if isAdmin}}
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="list-group">
+        <a href="/clients" class="list-group-item"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Clientes</span></a>
+        <a href="/clients/add" class="list-group-item submenu"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Cliente nuevo</span></a>
+        <a href="/bills" class="list-group-item "><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Recibos</span></a>
+        <a href="/bills/add" class="list-group-item submenu"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Recibo nuevo</span></a>
+        <a href="/budgets" class="list-group-item "><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Presupuestos</span></a>
+        <a href="/budgets/add" class="list-group-item submenu"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Presupuesto nuevo</span></a>
+        <a href="/invoices" class="list-group-item"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Facturas</span></a>
+        <a href="/invoices/add" class="list-group-item submenu"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Factura nueva</span></a>
+        <a href="/settings" class="list-group-item"><i class="glyphicon glyphicon-chevron-right pull-right"></i><span>Configuracion</span></a>
+        </div>
+      </div>
+    {{/if}}
+    {{{body}}}
+    {{#if isAdmin}}
+    </div>
+    {{/if}}
+  </div>
+  <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/vendor/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
+  <script src="/vendor/moment/min/moment.min.js"></script>
+  <script src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
+  <script src="/vendor/accounting.min.js"></script>
+  <script type="text/javascript">
+    accounting.settings = {
+      currency: {
+        symbol: "€",
+        format: "%v %s",
+        decimal: ",",
+        thousand: ".",
+        precision: 2
+      },
+      number: {
+        precision : 2,  // default precision on numbers is 0
+        thousand: ".",
+        decimal : ","
+      }
+    }
+  </script>
+  <!--Script-->
+  <script src="/js/client.js"></script>
+  <script src="/js/budget.js"></script>
+  <script src="/js/invoice.js"></script>
+</body>
+</html>

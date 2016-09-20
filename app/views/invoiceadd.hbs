@@ -1,0 +1,180 @@
+<div class="col-sm-10">
+  <form method="post" id="invoice">
+  <input type="hidden" name="mode" id="mode" value="{{mode}}">
+    <div class="row">
+      <div class="col-sm-6">
+        {{#ifCond mode 'add'}}
+          <h1 class="page-title">Nuevo factura: {{invoice_num}}</h1>
+        {{else}}
+          <h1 class="page-title">Editar factura: {{invoice.invoice_number}}</h1>
+        {{/ifCond}}
+      </div>
+      <div class="col-sm-6">
+        <div class="pull-right">
+          <input type="submit" value="Guardar" class="btn btn-success">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class="input-group">
+                <label for="invoice_number" class="input-group-addon">Numero</label>
+                {{#ifCond mode 'add'}}
+                  <input type="text" name="invoice_number" value="{{invoice_num}}" id="invoice_number" class="form-control">
+                {{else}}
+                  <input type="text" name="invoice_number" value="{{invoice.invoice_number}}" id="invoice_number" class="form-control">
+                {{/ifCond}}
+
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <label for="invoice_date" class="input-group-addon">Fecha</label>
+                {{#ifCond mode 'add'}}
+                <input type="text" name="invoice_date" id="invoice_date" class="form-control date">
+                {{else}}
+                 <input type="text" name="invoice_date" id="invoice_date" value="{{{toDate invoice.invoice_date}}}" class="form-control date">
+                {{/ifCond}}
+              </div>
+            </div>
+          </div>
+    </div>
+          <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="to_client" class="input-group-addon">Cliente</label>
+              <input type="text" name="to_client[name]" id="to_client" value="{{invoice._client.name}}" class="form-control"><a href="/clients/add" class="btn input-group-addon">Añadir cliente nuevo</a>
+              <input type="hidden" name="_client" id="_client" value="{{invoice._client._id}}">
+            </div>
+          </div>
+        </div>
+      </div>
+ <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="telf" class="input-group-addon">Telefono</label>
+              <input type="text" name="telf" disabled id="telf" class="telf form-control" value="{{invoice._client.telf}}">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="dni" class="input-group-addon">DNI/NIE</label>
+              <input type="text" name="dni" disabled id="dni" class="dni form-control" value="{{invoice._client.dni}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="address" class="input-group-addon">Direccion</label>
+              <input type="text" name="address" disabled id="address" class="address form-control" value="{{invoice._client.address}}">
+            </div>
+          </div>
+        </div>
+      </div>
+ <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="zipcode" class="input-group-addon">Codigo postal</label>
+              <input type="text" name="zipcode" disabled id="zipcode" class="zipcode form-control" value="{{invoice._client.zipcode}}">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="input-group">
+              <label for="city" class="input-group-addon">Ciudad</label>
+              <input type="text" name="city" disabled id="city" class="city form-control" value="{{invoice._client.city}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+   <table id="items" class="table">
+       <thead>
+      <tr>
+        <th width="10%" class="tabQuantity">Cant</th>
+        <th width="50%" class="tabDescription">Descripción</th>
+        <th width="10%" class="tabPrice">Precio</th>
+        <th width="14%" class="tabDiscount">%</th>
+        <th width="14%" class="tabAmount">Importe</th>
+      </tr>
+    </thead>
+  <tbody>
+    {{#ifCond mode 'add'}}
+      {{{eachRow 19}}} 
+    {{else}}
+      {{{eachRowClass invoice.items rows_num}}}
+    {{/ifCond}}
+  </tbody>
+  <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <label for="subtotal" class="pull-right">Total bruto</label>
+        </td>
+        <td>
+          <div class="input-group"><span class="input-group-addon">€</span>
+            <input type="text" name="subtotal" class="form-control totals subtotal input-medium" value="{{invoice.subtotal}}">
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <div class="input-group">
+            <label for="vat_perc" class="input-group-addon">IVA</label>
+            <input type="text" name="iva_perc" value="21" id="iva_perc"  class="form-control input-mini"><span class="input-group-addon">%</span>
+          </div>
+        </td>
+        <td>
+          <div class="input-group"><span class="input-group-addon">€</span>
+            <input type="text" name="iva_amount" id="iva_amount" value="{{invoice.iva_amount}}" class="form-control totals iva_amount input-medium">
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <label for="total" class="pull-right">TOTAL</label>
+        </td>
+        <td>
+          <div class="input-group"><span class="input-group-addon">€</span>
+            <input type="text" name="total" id="total" value="{{invoice.total}}" class="form-control total input-medium">
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </tfoot>
+   </table>
+     <hr class="clearfix">
+    <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+      <div class="pull-right">
+        <input type="submit" value="Guardar" class="btn btn-success btn-lg">
+      </div>
+    </div>
+  </div>
+  </form>
+  <br>
+</div>

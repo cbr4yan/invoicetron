@@ -1,0 +1,36 @@
+  <h1 class="page-title">Instalacion</h1>
+  <br>
+  <form method="post" action="/install" id="account-form" class="form-horizontal">
+    <p id="sub2" class="subheading">Informacion de usuario</p>
+    <hr>
+    <div id="name-cg" class="form-group">
+      <label for="name-tf" class="control-label col-sm-3">Nombre</label>
+      <div class="col-sm-6">
+        <input id="name-tf" type="text" name="name" class="form-control">
+      </div>
+    </div>
+    <div id="email-cg" class="form-group">
+      <label for="email-tf" class="control-label col-sm-3">Email</label>
+      <div class="col-sm-6">
+        <input id="email-tf" type="email" name="email" class="form-control">
+      </div>
+    </div>
+    <div id="password-cg" class="form-group">
+      <label for="password-tf" class="control-label col-sm-3">Contraseña</label>
+      <div class="col-sm-6">
+        <input id="password-tf" type="password" name="password" class="form-control">
+      </div>
+    </div>
+    <div id="roles-cg" class="form-group">
+      <label for="role" class="control-label col-sm-3">Nivel</label>
+      <div class="col-sm-6">
+        <input disabled value="Admin" class="form-control">
+        <input id="role" type="hidden" name="role" value="admin">
+      </div>
+    </div>
+    <p id="sub2" class="subheading">Informacion del sistema</p>
+    <hr>
+    <div class="form-actions">
+      <button type="submit" id="account-form-btn1" class="btn btn-success">Instalar</button>
+    </div>
+  </form>

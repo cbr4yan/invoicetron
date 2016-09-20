@@ -1,0 +1,27 @@
+  <div id="login-container" class="col-sm-4 col-sm-offset-4">
+    <h1>INVOICETRON</h1>
+    <form id="login-form" class="well" method="post">
+      {{#if isMessage}}
+      <div class="alert alert-danger">
+        <strong>ERROR!</strong> {{message}}
+      </div>
+      {{/if}}
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input class="form-control" type="password" name="password" required>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 checkbox">
+          <label for="remember-me">
+            <input type="checkbox" name="remember-me" id="remember-me">Recuérdame</label>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-primary pull-right">Acceder</button>
+        </div>
+      </div>
+    </form>
+  </div>

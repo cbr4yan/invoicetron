@@ -1,0 +1,39 @@
+.cnt {
+  margin-top: 71px;
+}
+.submenu {
+  background-color: #f9f9f9;
+}
+.submenu > a {
+  padding-left: 20px;
+}
+.page-title {
+  margin-top: 0;
+}
+th {
+  white-space: nowrap;
+}
+.tabQuantity {
+  width: 50px;
+}
+.tabPrice {
+  width: 150px;
+}
+.tabAmount {
+  width: 150px;
+}
+.tabDelete {
+  width: 50px;
+}
+.tabActions {
+  width: 130px;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.paddingright {
+  padding-right: 10px;
+}
+.paddingleft {
+  padding-left: 10px;
+}

@@ -1,0 +1,49 @@
+<div class="col-sm-10">
+  <h1 class="page-title">Lista de recibos</h1>
+  {{#if resultDelete.isMe}}
+    {{#if resultDelete.success}}
+      <div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+      <strong>BIEN!</strong> {{resultDelete.message}}
+      </div>
+    {{else}}
+      <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+      <strong>ERROR!</strong> {{resultDelete.message}}
+      </div>
+    {{/if}}
+  {{/if}}
+  <div>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th class="tabActions">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each budgets}}
+      <tr>
+        <td>{{this.budget_number}}</td>
+        <td>{{{toDate this.budget_date}}}</td>
+        <td>{{this._client.name}}</td>
+        <td>{{this.total}} €</td>
+        <td>
+        <div class="btn-group" role="group" aria-label="Acciones">
+          <button obtainClient="true" type="button" class="btn btn-info btn-rescate" id="{{this._id}}" onclick="window.location='/budgets/print/{{this._id}}'"><i class="fa fa-eye" aria-hidden="true"></i></button>
+          <a href="budgets/edit/{{this._id}}" class="btn btn-warning" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="budgets/delete/{{this._id}}" class="btn btn-danger" role="btn btn-danger btn-rescate">
+          <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </div>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+    </table>
+  </div>
+</div>

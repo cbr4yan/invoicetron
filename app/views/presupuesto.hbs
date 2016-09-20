@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}{{budget.budget_number}}</title>
+
+  <!-- Normalize or reset CSS with your favorite library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <!-- Load paper.css for happy printing -->
+  <link rel="stylesheet" href="/css/paper.css">
+
+  <style type="text/css">
+  @font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica.otf") format("opentype");
+}
+  @font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/helvetica-bold.otf");
+      font-weight: bold;
+
+}
+
+    body {
+font-family: 'Open Sans', sans-serif;
+font-size: 13px;
+
+    }
+    .sheet {
+      margin: auto;
+    }
+    .logo {
+      float: left;
+    }
+    .datosIn {
+
+      float: right;
+      padding: 0 40px 0 0;
+      display: inline-block;
+      border: 1px solid black;
+      margin-top: 15px;
+    }
+    .datosIn p {
+      margin: 3px;
+    }
+    .line {
+      border-bottom: 1px solid black;
+      clear: both;
+    }
+    .infoPla {
+      float: left;
+      border: 1px solid black;
+      border-top: 0px;
+      padding-right: 5px;
+    }
+    .infoPla p {
+      margin: 3px;
+    }
+    .infoPla .date {
+      padding-left: 80px;
+    }
+    .infoPla .num {
+      padding-left: 35px;
+    }
+    .infoUser {
+      float: right;
+      border: 1px solid black;
+      border-top: 0px;
+      padding-right: 80px
+    }
+    .infoUser p {
+      margin: 3px;
+    }
+    .titletype {
+      clear: both;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    .table {
+      width: 100%;
+    }
+    .table thead tr {
+      background-color: #424242;
+      color: #ffffff;
+      border: 1px solid black;
+    }
+    .table thead tr th{
+      padding: 2px;
+      font-weight: normal;
+    }
+
+    .table tbody tr td{
+      border: 1px solid black;
+     border-top: 0px;
+      border-bottom: 0px;
+      text-align: center;
+      height: 20px;
+
+      padding-top: 8px
+    }
+    .table tbody tr td.description {
+      text-align: left;
+      padding-left: 3px;
+      padding-right: 2px;
+    }
+    .table tbody tr td.precio {
+      padding-bottom: 0px;
+    }
+    tfoot {
+      border-top: 1px solid black;
+          display: table-footer-group;
+    vertical-align: middle;
+    border-color: inherit;
+    }
+    .spaceAll {
+      width: 100%;
+      height: 20px;
+    }
+    table.tablesub {
+      width: 100%;
+    }
+        .tablesub thead tr {
+      background-color: #424242;
+      color: #ffffff;
+      border: 1px solid black;
+    }
+        .tablesub thead tr th{
+      padding: 2px;
+      font-weight: normal;
+    }
+        .tablesub tbody tr td{
+      border: 1px solid black;
+     border-top: 0px;
+      text-align: center;
+      height: 80px;
+
+      padding-top: 5px
+    }
+    .tablesub tbody tr td.iva {
+      background-color: #F5F5F5;
+    }
+
+    .infoP {
+      margin-top: 20px;
+      border: 1px solid black;
+      width: 100%
+    }
+    .infoP p{
+      margin: 3px;
+    }
+    p.sadsd {
+      font-weight: bold;
+    }
+    .finistext {
+      margin-top: 15px;
+      display: block;
+      text-align: center;
+    }
+    .table tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
+.imprimirALl {
+    position: fixed;
+    z-index: 100;
+
+}
+.imprimirALl .button {
+  display: block;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+  </style>
+
+  <!-- Set page size here: A5, A4 or A3 -->
+  <!-- Set also "landscape" if you need -->
+  <style>@page { size: A4 }</style>
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body class="A4">
+<div class="imprimirALl">
+<a href="javascript:window.print()" class="button">Imprimir</a>
+<a href="javascript:window.history.back();" class="button">Volver atras</a>
+</div>
+  <!-- Each sheet element should have the class "sheet" -->
+  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+  <section class="sheet padding-10mm">
+    <!-- Write HTML just like a web page -->
+    <div class="logo">
+      <img src="/images/logo.png" alt="Smiley face" height="120px">
+    </div>
+    <div class="datosIn">
+      <p>Carrer Casanova 98 - 100, loc1</p>
+      <p>08011 Barcelona</p>
+      <p>931 411 087</p>
+      <p>625 374 267</p>
+    </div>
+    <div class="line"></div>
+    <div class="infoPla">
+      <p>Fecha: <span class="date">{{{toDate budget.budget_date}}}</span></p>
+      <p>Presupuesto nº: <span class="num">{{budget.budget_number}}</span></p>
+      <p>Pago:</p>
+    </div>
+    <div class="infoUser">
+      <p>{{budget._client.name}}</p>
+      <p>{{budget._client.telf}}</p>
+      <p>{{budget._client.address}}</p>
+      <p>{{budget._client.zipcode}}, {{budget._client.city}}</p>
+    </div>
+    <div class="titletype">PRESUPUESTO</div>
+    <table class="table" >
+      <thead>
+        <tr>
+          <th width="5%">C.</th>
+          <th width="62%"></th>
+          <th width="12%">Precio</th>
+          <th width="8%">%</th>
+          <th width="13%">Importe</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each budget.items}}
+        <tr>
+          <td>{{this.quantity}}</td>
+          <td class="description">{{this.description}}</td>
+          <td class="precio">{{this.price}}</td>
+          <td>{{this.discount}}</td>
+          <td class="importe">{{this.amount}}{{#if this.amount}}€{{/if}}</td>
+        </tr>
+      {{/each}}
+      {{{eachRowPrint rows_num}}}
+      </tbody>
+        <tfoot>
+    <tr>
+    </tr>
+  </tfoot>
+    </table>
+    <div class="spaceAll"></div>
+    <table class="tablesub">
+      <thead>
+        <tr>
+          <th width="20%">Total bruto</th>
+          <th width="20%">Base imp.</th>
+          <th width="20%">% I.V.A</th>
+          <th width="20%">Imp. I.V.A</th>
+          <th width="20%">Total factura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{budget.subtotal}}{{#if budget.subtotal}}€{{/if}}</td>
+          <td></td>
+          <td class="iva">{{budget.iva_perc}}</td>
+          <td>{{budget.iva_amount}}{{#if budget.iva_amount}}€{{/if}}</td>
+          <td>{{budget.total}}{{#if budget.total}}€{{/if}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="infoP">
+      <p class="sadsd">OBSERVACION:</p>
+      <p>En caso de aceptar el presupuesto, 40% de adelanto, el 30% al entregar el genero y el 30% restante, al terminar la obra.</p>
+    </div>
+    <div class="finistext">Gracias por confiar en nosotros</div>
+  </section>
+</body>
+
+</html>
