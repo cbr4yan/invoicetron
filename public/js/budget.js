@@ -78,7 +78,24 @@ $(function () {
       }
     }).fail();
   });
-  
+ 
+  $('#budget-edit').submit(function (e) {
+    e.preventDefault();
+    var idm = $('#idm').val();
+    var data = $(this).serialize();
+    $.ajax({
+      method: 'POST',
+      url: '/budgets/edit/' + idm,
+      dataType: 'json',
+      data: data
+    }).done(function (data) {
+      if (!data.success) {
+        modalBudget('ERROR', data.message, data.success, 0).open();
+      } else {
+        modalBudget('EXITO', data.message, data.success, data.id).open();
+      }
+    }).fail();
+  }); 
   calculateAll();
   limitrow();
 });

@@ -1,5 +1,10 @@
 <div class="col-sm-10">
-  <form method="post" id="invoice">
+        {{#ifCond mode 'add'}}
+            <form method="post" id="invoice">
+        {{else}}
+  <form method="post" id="invoice-edit">
+  <input type="hidden" name="idm" id="idm" value="{{invoice._id}}">
+        {{/ifCond}}
   <input type="hidden" name="mode" id="mode" value="{{mode}}">
     <div class="row">
       <div class="col-sm-6">

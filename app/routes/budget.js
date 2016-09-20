@@ -49,6 +49,17 @@ router.route('/edit/:id_budget')
           });
           res.render('budgetadd', { title: 'Editar presupuesto', isAdmin: true, budget: budget, rows_num: (19 - rows), mode: 'edit' });
         });
+      })
+      .post((req, res) => {
+        const date_parse = req.body.budget_date.split(/\//);
+        req.body.budget_date = new Date(date_parse[2],date_parse[1]-1,date_parse[0]);
+        Budgets.findOneAndUpdate({ _id: req.params.id_budget }, req.body, (e, budget) => {
+          if (!budget) {
+            res.status(200).send({ success: false, message: 'No se ha podido guardar los datos.' });
+          } else {
+            res.status(200).send({ success: true, message: 'Datos guardados correctamente.', id: budget._id  });
+          }
+        }); 
       });
 router.route('/print/:id_budget')
       .get((req, res) => {

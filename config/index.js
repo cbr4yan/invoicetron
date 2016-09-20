@@ -83,72 +83,11 @@ helpershbs_eachRow: () => {
       </tr>`;
       i++;
       });
-      for (var j = i; j < 18; j++) {
-        result += `<tr>
-        <td>
-          <input type="text" name="items[${j}][quantity]" id="quantity_${j}" class="form-control quantity">
-        </td>
-        <td>
-          <textarea type="text" name="items[${j}][description]" id="description_${j}" class="description form-control"></textarea>
-        </td>
-        <td>
-          <div class="input-group"><span class="input-group-addon">€</span>
-            <input type="text" name="items[${j}][price]" id="price_${j}" class="price form-control">
-          </div>
-        </td>
-                <td>
-          <div class="input-group"><span class="input-group-addon">%</span>
-            <input type="text" name="items[${j}][discount]" id="discount_${j}" class="discount form-control">
-          </div>
-        </td>
-        <td>
-          <div class="input-group"><span class="input-group-addon">€</span>
-            <input type="text" name="items[${j}][amount]" id="amount_${j}"  class="amount form-control">
-          </div>
-        </td>
-      </tr>`;
-      }
+     
       return result;
     });
   },
-  helpershbs_eachRowClass: () => {
-    hbs.registerHelper('eachRowClass', function (items, options) {
-      let result = ``;
-      items.forEach(function (item, index) {
-        let type = "";
-        if (index > 0) {
-          type = '<td><a class="btn ibtnDel"><i class="fa fa-times" aria-hidden="true"></i></a></td>';
-        } else {
-          type = '<td><a id="add_row" class="btn"><i class="fa fa-plus" aria-hidden="true"></i></a></td>';
-        }
-        result += `<tr>
-        <td>
-          <input type="text" name="items[${index}][quantity]" id="quantity_${index}" class="form-control quantity" value="${item.quantity}">
-        </td>
-        <td>
-          <textarea type="text" name="items[${index}][description]" id="description_${index}" class="description form-control">${item.description}</textarea>
-        </td>
-        <td>
-          <div class="input-group"><span class="input-group-addon">€</span>
-            <input type="text" name="items[${index}][price]" id="price_${index}" class="price form-control" value="${item.price}">
-          </div>
-        </td>
-                <td>
-          <div class="input-group"><span class="input-group-addon">%</span>
-            <input type="text" name="items[${index}][discount]" id="discount_${index}" class="discount form-control" value="${item.discount}">
-          </div>
-        </td>
-        <td>
-          <div class="input-group"><span class="input-group-addon">€</span>
-            <input type="text" name="items[${index}][amount]" id="amount_${index}"  class="amount form-control" value="${item.amount}">
-          </div>
-        </td>
-        ${type}
-      </tr>`
-      });
-      return result;
-    });
-  },
+
 
   sessionSecret: 'EzK!>-c4RxEJAr%f',
   session: (MongoStore) => {

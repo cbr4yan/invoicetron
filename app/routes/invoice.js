@@ -26,9 +26,7 @@ router.route('/add')
       .post((req, res) => {
         const date_parse = req.body.invoice_date.split(/\//);
         req.body.invoice_date = new Date(date_parse[2],date_parse[1]-1,date_parse[0]);
-        console.log(req.body);
         Invoices.create(req.body, (e, invoice) => {
-          console.log(e);
           if (!invoice) {
             res.status(200).send({ success: false, message: 'No se ha podido guardar los datos.' });
           } else {
@@ -48,7 +46,19 @@ router.route('/edit/:id_invoice')
           });
           res.render('invoiceadd', { title: 'Editar presupuesto', isAdmin: true, invoice: invoice, rows_num: (19 - rows), mode: 'edit' });
         });
+      })
+      .post((req, res) => {
+        const date_parse = req.body.invoice_date.split(/\//);
+        req.body.invoice_date = new Date(date_parse[2],date_parse[1]-1,date_parse[0]);
+        Invoices.findOneAndUpdate({ _id: req.params.id_invoice }, req.body, (e, invoice) => {
+          if (!invoice) {
+            res.status(200).send({ success: false, message: 'No se ha podido guardar los datos.' });
+          } else {
+            res.status(200).send({ success: true, message: 'Datos guardados correctamente.', id: invoice._id  });
+          }
+        });
       });
+
 router.route('/print/:id_invoice')
       .get((req, res) => {
         Invoices.findById(req.params.id_invoice, (err, invoice) => {
