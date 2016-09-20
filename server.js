@@ -8,6 +8,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const pdf = require('express-pdf');
+const fs = require('fs');
 
 // own modules
 const config = require('./config');
@@ -21,7 +22,7 @@ app.set('view engine', 'hbs');
 
 // app middleware
 //app.use(morgan('dev'));
-app.use(logger('dev', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}))
+app.use(morgan('common', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}))
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
