@@ -20,8 +20,8 @@ app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'hbs');
 
 // app middleware
-app.use(pdf);
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
+app.use(logger('dev', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}))
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
