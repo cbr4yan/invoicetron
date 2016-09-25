@@ -16,7 +16,7 @@ router.route('/add')
       .get((req, res) => {
         Invoices.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
       if (!post) {
-        res.render('invoiceadd', { title: 'Añadir factura', isAdmin: true, invoice_num: 100, mode: 'add'  });
+        res.render('invoiceadd', { title: 'Añadir factura', isAdmin: true, invoice_num: 74, mode: 'add'  });
       } else {
         invoice_num = post.invoice_number + 1;
         res.render('invoiceadd', { title: 'Añadir factura', isAdmin: true, invoice_num: invoice_num,  mode: 'add' });

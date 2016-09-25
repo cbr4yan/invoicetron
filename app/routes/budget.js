@@ -8,7 +8,7 @@ router.route('/')
       .get((req, res) => {
         Budgets.find({}, (err, psr) => {
           const resultDelete = req.flash('resultDelete');
-          
+
           res.render('budget', { title: 'Lista de presupuestos', isAdmin: true, budgets: psr, resultDelete: resultDelete[0] });
         });
       });
@@ -17,7 +17,7 @@ router.route('/add')
       .get((req, res) => {
         Budgets.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
       if (!post) {
-        res.render('budgetadd', { title: 'Añadir presupuesto', isAdmin: true, invoice_num: 200, mode: 'add'  });
+        res.render('budgetadd', { title: 'Añadir presupuesto', isAdmin: true, invoice_num: 3144, mode: 'add'  });
       } else {
         invoice_num = post.budget_number + 1;
         res.render('budgetadd', { title: 'Añadir presupuesto', isAdmin: true, invoice_num: invoice_num,  mode: 'add' });
@@ -59,7 +59,7 @@ router.route('/edit/:id_budget')
           } else {
             res.status(200).send({ success: true, message: 'Datos guardados correctamente.', id: budget._id  });
           }
-        }); 
+        });
       });
 router.route('/print/:id_budget')
       .get((req, res) => {
