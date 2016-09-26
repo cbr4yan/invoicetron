@@ -58,6 +58,7 @@ $(function () {
     var subtotalCurrent = accounting.unformat($('.subtotal').val(), ",");
     //
     $('.subtotal').val(accounting.formatNumber(subtotalCurrent - accounting.unformat($(this).closest('tr').find('.amount').val(), ",")));
+      calculateAll();
     counter--;
   });
 
