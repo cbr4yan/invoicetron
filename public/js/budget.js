@@ -123,7 +123,11 @@ function limitrow() {
       result = Math.ceil(length / 74);
     }
     console.log(`result-> ${result}`);
-
+    if (lastNumerRow !== result) {
+      if (lastNumerRow > result) {
+        console.log('suma una columna');
+      }
+    }
     var rowsrest = 18 - (19 - result);
     /*for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
