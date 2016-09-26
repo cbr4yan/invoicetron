@@ -55,10 +55,10 @@ $(function () {
 
   $('#items').on('click', '.ibtnDel', function (e) {
     $(this).closest('tr').remove();
-    var subtotalCurrent = $('.subtotal').val();
-    $('.subtotal').val(subtotalCurrent - $(this).closest('tr').find('.amount').val());
+    var subtotalCurrent = accounting.unformat($('.subtotal').val(), ",");
+    //
+    $('.subtotal').val(accounting.formatNumber(subtotalCurrent - accounting.unformat($(this).closest('tr').find('.amount').val()), ",")));
     counter--;
-    calculateAll();
   });
 
 
