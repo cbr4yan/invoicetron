@@ -99,40 +99,37 @@ $(function () {
   calculateAll();
   limitrow();
 });
-var tmpResult = 0;
-function limitrow() {
-  var lastSize = 0;
-  $('#items').on('focus', '.description', function() {
-    var $row = $(this).closest('tr');
-    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
-    var length = description.length;
-    lastSize = length;
-    console.log(lastSize);
-  }).on('change', '.description', function() {
-    var $row = $(this).closest('tr');
-    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
-    console.log(description.length);
-  })
 
-  /*$('#items').on('change', '.description', function () {
+function limitrow() {
+  var lastNumerRow = 0;
+  $('#items')
+  .on('focus', '.description', function () {
     var $row = $(this).closest('tr');
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     var length = description.length;
-    var result = 0;
     if (length > 0) {
-      result = Math.ceil(length / 74);
+      //const result = Math.ceil(len / 74);
+      lastNumerRow = Math.ceil(length / 74);
     }
+    console.log(`last-> ${lastNumerRow}`);
+  })
+  .on('change', '.description', function () {
+    var $row = $(this).closest('tr');
+    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
+    var length = description.length;
+      var result = 0 ;
     if (length > 0) {
       //const result = Math.ceil(len / 74);
       result = Math.ceil(length / 74);
     }
+    console.log(`result-> ${result}`);
 
     var rowsrest = 18 - (19 - result);
-    for (var i = 0; i < rowsrest; i++) {
+    /*for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
-    }
+    }*/
     ///$('#items tbody tr').last()
-  });*/
+  });
 }
 
 function modalBudget(title, message, succes, id) {
