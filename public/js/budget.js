@@ -97,7 +97,7 @@ $(function () {
     }).fail();
   });
   calculateAll();
-  limitrow();
+//  limitrow();
 });
 
 function limitrow() {
