@@ -57,10 +57,8 @@ $(function () {
     $(this).closest('tr').remove();
     var subtotalCurrent = accounting.unformat($('.subtotal').val(), ",");
     //
-    $('.subtotal').val(accounting.formatNumber(subtotalCurrent - accounting.unformat($(this).closest('tr').find('.amount').val(), ",")));
-    $('.iva_amount').val(accounting.formatNumber(accounting.unformat($('.iva_amount').val(), ",") - accounting.unformat($(this).closest('tr').find('.iva_amount').val(), ",")));
-    $('#total').val(accounting.formatNumber(accounting.unformat($('#total').val(), ",") - accounting.unformat($(this).closest('tr').find('#total').val(), ",")));
-
+    var subtotal = $('.subtotal').val(accounting.formatNumber(subtotalCurrent - accounting.unformat($(this).closest('tr').find('.amount').val(), ",")));
+  calculateIVA(subtotal); 
     counter--;
   });
 
