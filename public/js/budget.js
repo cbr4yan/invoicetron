@@ -101,37 +101,18 @@ $(function () {
 });
 
 function limitrow() {
-  var lastNumerRow = 0;
-  $('#items')
-  .on('focus', '.description', function () {
+  $('#items').on('change', '.description', function () {
     var $row = $(this).closest('tr');
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     var length = description.length;
     if (length > 0) {
       //const result = Math.ceil(len / 74);
-      lastNumerRow = Math.ceil(length / 74);
-    }
-    console.log(`last-> ${lastNumerRow}`);
-  })
-  .on('change', '.description', function () {
-    var $row = $(this).closest('tr');
-    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
-    var length = description.length;
-      var result = 0 ;
-    if (length > 0) {
-      //const result = Math.ceil(len / 74);
-      result = Math.ceil(length / 74);
-    }
-    console.log(`result-> ${result}`);
-    if (lastNumerRow !== result) {
-      if (lastNumerRow > result) {
-        console.log('suma una columna');
-      }
+      var result = Math.ceil(length / 74);
     }
     var rowsrest = 18 - (19 - result);
-    /*for (var i = 0; i < rowsrest; i++) {
+    for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
-    }*/
+    }
     ///$('#items tbody tr').last()
   });
 }
