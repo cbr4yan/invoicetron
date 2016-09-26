@@ -106,11 +106,18 @@ function limitrow() {
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     var length = description.length;
     var result = 0;
-    if (length > 0) {
+
+    if (length > 0 && length < 74) {
+      console.log('no remove');
+    } else {
+      console.log('remove');
+    }
+
+    /*if (length > 0) {
       //const result = Math.ceil(len / 74);
       result = Math.ceil(length / 74);
-    }
-    console.log(result);
+    }*/
+
     /*var rowsrest = 18 - (19 - result);
     for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
