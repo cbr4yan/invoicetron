@@ -70,7 +70,7 @@ router.route('/print/:id_budget')
             const result = Math.ceil(len / 74);
             rows += result;
           });
-          res.render('blank', {layout: 'presupuesto.hbs', budget: budget, rows_num: (17 - rows), title: "Presupuesto n" })
+          res.render('blank', {layout: 'presupuesto.hbs', budget: budget, rows_num: (19 - rows), title: "Presupuesto n" })
         });
       });
 router.route('/delete/:id_budget')

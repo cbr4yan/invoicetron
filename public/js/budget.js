@@ -3,7 +3,7 @@ $(function () {
     format: 'DD/MM/YYYY',
     defaultDate: "moment"
   });
-  
+
   $("#edit_num_inv").click(function (event) {
     event.preventDefault();
     if ($("#invoice_number").prop('disabled') === true) {
@@ -31,10 +31,10 @@ $(function () {
       $("#city").val(queryResult[i].city);
       $("#address").val(queryResult[i].address);
       $("#zipcode").val(queryResult[i].zipcode);
-      $("#_client").val(queryResult[i]._id);   
+      $("#_client").val(queryResult[i]._id);
     }
   });
-  
+
   var counter = 1;
 
   $('#add_row').click(function () {
@@ -78,7 +78,7 @@ $(function () {
       }
     }).fail();
   });
- 
+
   $('#budget-edit').submit(function (e) {
     e.preventDefault();
     var idm = $('#idm').val();
@@ -95,7 +95,7 @@ $(function () {
         modalBudget('EXITO', data.message, data.success, data.id).open();
       }
     }).fail();
-  }); 
+  });
   calculateAll();
   limitrow();
 });
@@ -105,14 +105,16 @@ function limitrow() {
     var $row = $(this).closest('tr');
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     var length = description.length;
+    var result = 0;
     if (length > 0) {
       //const result = Math.ceil(len / 74);
-      var result = Math.ceil(length / 74);
+      result = Math.ceil(length / 74);
     }
-    var rowsrest = 18 - (19 - result);
+    console.log(result);
+    /*var rowsrest = 18 - (19 - result);
     for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
-    }
+    }*/
     ///$('#items tbody tr').last()
   });
 }
@@ -181,10 +183,10 @@ function calculateAll() {
     }
     if (price.length != 0) {
       $row.find('.price').val(accounting.formatNumber(accounting.unformat(price, ",")));
-    } 
+    }
     if (importe.length != 0) {
       $row.find('.amount').val(accounting.formatNumber(accounting.unformat(importe, ",")));
-    } 
+    }
     if (subtotal.length != 0) {
       $('.subtotal').val(accounting.formatNumber(accounting.unformat(subtotal, ",")));
     }
@@ -198,7 +200,7 @@ function calculateAll() {
     }
     calculateSubTotal();
 
-  /*    
+  /*
     if (price.length != 0) {
       $row.find('.price').val(accounting.formatNumber(accounting.unformat(price, ",")));
     }
