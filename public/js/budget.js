@@ -58,6 +58,7 @@ $(function () {
     var subtotalCurrent = $('.subtotal').val();
     $('.subtotal').val(subtotalCurrent - $(this).closest('tr').find('.amount').val());
     counter--;
+    calculateAll();
   });
 
 
