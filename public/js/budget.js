@@ -99,9 +99,17 @@ $(function () {
   calculateAll();
   limitrow();
 });
-
+var tmpResult = 0;
 function limitrow() {
-  $('#items').on('change', '.description', function () {
+  $('#items').on('focus', '.description', function() {
+    var $row = $(this).closest('tr');
+    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
+    console.log(description.length);
+  }).on('change', '.description', function() {
+    console.log(description.length);
+  })
+
+  /*$('#items').on('change', '.description', function () {
     var $row = $(this).closest('tr');
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     var length = description.length;
@@ -109,18 +117,17 @@ function limitrow() {
     if (length > 0) {
       result = Math.ceil(length / 74);
     }
-    console.log(`le=> ${length} , resukt-> ${result}`);
-    /*if (length > 0) {
+    if (length > 0) {
       //const result = Math.ceil(len / 74);
       result = Math.ceil(length / 74);
-    }*/
+    }
 
-    /*var rowsrest = 18 - (19 - result);
+    var rowsrest = 18 - (19 - result);
     for (var i = 0; i < rowsrest; i++) {
       $('#items tbody tr').last().remove();
-    }*/
+    }
     ///$('#items tbody tr').last()
-  });
+  });*/
 }
 
 function modalBudget(title, message, succes, id) {
