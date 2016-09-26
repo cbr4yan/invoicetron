@@ -101,11 +101,16 @@ $(function () {
 });
 var tmpResult = 0;
 function limitrow() {
+  var lastSize = 0;
   $('#items').on('focus', '.description', function() {
     var $row = $(this).closest('tr');
     var description = $row.find('.description').val() ? $row.find('.description').val() : '';
-    console.log(description.length);
+    var length = description.length;
+    lastSize = length;
+    console.log(lastSize);
   }).on('change', '.description', function() {
+    var $row = $(this).closest('tr');
+    var description = $row.find('.description').val() ? $row.find('.description').val() : '';
     console.log(description.length);
   })
 
