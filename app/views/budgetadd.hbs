@@ -27,9 +27,9 @@
         <div class="input-group">
                 <label for="budget_number" class="input-group-addon">Numero</label>
                 {{#ifCond mode 'add'}}
-                  <input type="text" name="budget_number" value="{{invoice_num}}" id="budget_number" class="form-control">
+                  <input type="text" name="budget_number" disabled value="{{invoice_num}}" id="budget_number" class="form-control">
                 {{else}}
-                  <input type="text" name="budget_number" value="{{budget.budget_number}}" id="budget_number" class="form-control">
+                  <input type="text" name="budget_number" disabled value="{{budget.budget_number}}" id="budget_number" class="form-control">
                 {{/ifCond}}
 
               </div>
@@ -40,9 +40,9 @@
               <div class="input-group">
                 <label for="budget_date" class="input-group-addon">Fecha</label>
                 {{#ifCond mode 'add'}}
-                <input type="text" name="budget_date" id="budget_date" class="form-control date">
+                <input type="text" name="budget_date" id="budget_date" disabled class="form-control date">
                 {{else}}
-                 <input type="text" name="budget_date" id="budget_date" value="{{{toDate budget.budget_date}}}" class="form-control date">
+                 <input type="text" name="budget_date" id="budget_date" disabled value="{{{toDate budget.budget_date}}}" class="form-control date">
                 {{/ifCond}}
               </div>
             </div>

@@ -68,7 +68,7 @@ router.route('/print/:id_invoice')
             const result = Math.ceil(len / 74);
             rows += result;
           });
-          res.render('blank', {layout: 'factura.hbs', invoice: invoice, rows_num: (19 - rows), title: "Factura n" })
+          res.render('blank', {layout: 'factura.hbs', invoice: invoice, rows_num: (20 - rows), title: "Factura n" })
         });
       });
 router.route('/delete/:id_invoice')
