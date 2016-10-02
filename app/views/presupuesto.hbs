@@ -227,6 +227,11 @@ padding: 2px;
   padding-left: 2px;
   margin-bottom: 2px;
 }
+.info p {
+  float: right;
+  margin: 0;
+  padding-right: 4px;
+}
   </style>
 
   <!-- Set page size here: A5, A4 or A3 -->
@@ -258,9 +263,9 @@ padding: 2px;
 <div class="row">
   <div class="col-4 info">
     <ul>
-      <li>Fecha:</li>
-      <li>Presupuesto nº:</li>
-      <li>Pago:</li>
+      <li>Fecha: <p>{{{toDate budget.budget_date}}}</p></li>
+      <li>Presupuesto nº: <p>{{budget.budget_number}}</p></li>
+      <li>Pago: <p></p></li>
     </ul>
   </div>
   <div class="col-4 email">
