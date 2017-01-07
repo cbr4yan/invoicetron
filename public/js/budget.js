@@ -175,7 +175,7 @@ function calculateSubTotal() {
 
 
 function calculateAll() {
-  $('#items').on('change', '.quantity, .price, #iva_perc, , #irpf_perc, .discount, .amount, .subtotal, .iva_amount', function () {
+  $('#items').on('change', '.quantity, .price, #iva_perc, #irpf_perc, .discount, .amount, .subtotal, .iva_amount', function () {
     var amount = 0;
     var operationDiscount = 0;
     var $row = $(this).closest('tr');
