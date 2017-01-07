@@ -138,18 +138,26 @@ function modalBudget(title, message, succes, id) {
   });
 }
 
-function calculateTotal(subtotal, iva_amount) {
-  var total = subtotal + iva_amount;
+function calculateTotal(subtotal, iva_amount, irpf_amount) {
+  var total = subtotal + iva_amount - irpf_amount;
   var totalold = $('#total').val();
     $('#total').val(accounting.formatNumber(total));
 
+}
+
+function calculateIRPF(subtotal) {
+  var irpf_perc = $('#irpf_perc').val();
+  var irpf_amount = (irpf_perc/100) * subtotal;
+  $('.irpf_amount').val(accounting.formatNumber(irpf_amount));
+  return irpf_amount;
 }
 
 function calculateIVA(subtotal) {
   var iva_perc = $('#iva_perc').val();
   var iva_amount = (iva_perc/100) * subtotal;
   $('.iva_amount').val(accounting.formatNumber(iva_amount));
-  calculateTotal(subtotal, iva_amount);
+  irpf_amount = calculateIRPF(subtotal);
+  calculateTotal(subtotal, iva_amount, irpf_amount);
 }
 
 function calculateSubTotal() {

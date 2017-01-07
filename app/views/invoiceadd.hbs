@@ -160,6 +160,23 @@
         <td></td>
         <td></td>
         <td>
+          <div class="input-group">
+            <label for="irpf_perc" class="input-group-addon">IRPF</label>
+            <input type="text" name="irpf_perc" value="5" id="irpf_perc"  class="form-control input-mini"><span class="input-group-addon">%</span>
+          </div>
+        </td>
+        <td>
+          <div class="input-group"><span class="input-group-addon">€</span>
+            <input type="text" name="irpf_amount" id="irpf_amount" value="{{invoice.irpf_amount}}" class="form-control totals irpf_amount input-medium">
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
           <label for="total" class="pull-right">TOTAL</label>
         </td>
         <td>

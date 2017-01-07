@@ -29,6 +29,8 @@ const InvoiceSchema = mongoose.Schema({
   subtotal: String,
   iva_perc: String,
   iva_amount: String,
+  irpf_perc: String,
+  irpf_amount: String,
   total: {
     type: String},
   created_at: {
