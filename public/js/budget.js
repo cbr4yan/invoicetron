@@ -147,10 +147,10 @@ function calculateTotal(subtotal, iva_amount, irpf_amount) {
 
 function calculateIRPF(subtotal) {
   var irpf_perc = $('#irpf_perc').val();
-  var irpf_amount = (irpf_perc/100) * subtotal;
-  var irpf_amount_mo = parseInt(irpf_amount.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
-  $('.irpf_amount').val(accounting.formatNumber(irpf_amount_mo));
-  return irpf_amount_mo;
+  var irpf_amount = subtotal * (irpf_perc/100);
+  console.log(irpf_amount);
+  $('.irpf_amount').val(accounting.formatNumber(irpf_amount));
+  return irpf_amount;
 }
 
 function calculateIVA(subtotal) {
@@ -175,7 +175,7 @@ function calculateSubTotal() {
 
 
 function calculateAll() {
-  $('#items').on('change', '.quantity, .price, #iva_perc, .discount, .amount, .subtotal, .iva_amount', function () {
+  $('#items').on('change', '.quantity, .price, #iva_perc, , #irpf_perc, .discount, .amount, .subtotal, .iva_amount', function () {
     var amount = 0;
     var operationDiscount = 0;
     var $row = $(this).closest('tr');
