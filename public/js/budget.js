@@ -147,7 +147,7 @@ function calculateTotal(subtotal, iva_amount, irpf_amount) {
 
 function calculateIRPF(subtotal) {
   var irpf_perc = $('#irpf_perc').val();
-  var irpf_amount = Math.floor((irpf_perc/100) * subtotal);
+  var irpf_amount = (irpf_perc/100) * subtotal;
   $('.irpf_amount').val(accounting.formatNumber(irpf_amount));
   return irpf_amount;
 }
