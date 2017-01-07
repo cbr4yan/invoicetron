@@ -254,7 +254,7 @@ font-size: 13px;
       <thead>
         <tr>
           <th width="20%">Total bruto</th>
-          <th width="20%">Base imp.</th>
+          <th width="20%">I.R.P.F</th>
           <th width="20%">% I.V.A</th>
           <th width="20%">Imp. I.V.A</th>
           <th width="20%">Total factura</th>
@@ -263,7 +263,7 @@ font-size: 13px;
       <tbody>
         <tr>
           <td>{{invoice.subtotal}}{{#if invoice.subtotal}}€{{/if}}</td>
-          <td></td>
+          <td>{{invoice.irpf_amount}}{{#if invoice.irpf_amount}}€{{/if}}</td>
           <td class="iva">21</td>
           <td>{{invoice.iva_amount}}{{#if invoice.iva_amount}}€{{/if}}</td>
           <td>{{invoice.total}}{{#if invoice.total}}€{{/if}}</td>
